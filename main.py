@@ -14,21 +14,6 @@ star_data = rows[1:]
 
 count = 0
 
-temp_data = list(star_data)
-print('Total Stars: ', len(star_data))
-
-for data in temp_data:
-    try:
-        if float(data[2]) <= 100.00 and float(data[5]) >= 150.00 or float(data[2]) <= 100.00 and float(data[5]) <= 350.00:
-            count += 1
-        else:
-            star_data.remove(data)
-    except:
-        star_data.remove(data)
-        pass
-
-
-print('Filtered Stars:', len(star_data))
 
 
 name = []
@@ -37,13 +22,26 @@ mass = []
 distance = []
 gravity= []
 
-for i in range(len(star_data)):
-    name.append(star_data[i][1])
-    distance.append(star_data[i][2])
-    mass.append(star_data[i][3])
-    radius.append(star_data[i][4])
-    gravity.append(star_data[i][5])
 
+temp_data = list(star_data)
+print('Total Stars: ', len(star_data))
+
+for data in temp_data:
+    try:
+        if float(data[2]) <= 100.00:
+            if float(data[5]) >=150.00 and float(data[5]) <=350.00:
+                count += 1
+                distance.append(data[2])
+                gravity.append(data[5])
+                name.append(data[1])
+                mass.append(data[3])
+                radius.append(data[4])
+
+    except:
+        star_data.remove(data)
+        pass
+
+print(distance,'\n\n\n\n\n',gravity)
 
 print(count)
 
